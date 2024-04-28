@@ -2,12 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Interface for transactions
 interface Transaction {
     void execute(double amount);
 }
 
-// Abstract class for Account
 abstract class Account {
     private String accountNumber;
     protected double balance;
@@ -25,12 +23,10 @@ abstract class Account {
         return balance;
     }
 
-    // Abstract methods for transaction execution
     abstract void deposit(double amount);
     abstract void withdraw(double amount);
 }
 
-// Concrete subclass for SavingsAccount
 class SavingsAccount extends Account implements Transaction {
     public SavingsAccount(String accountNumber, double balance) {
         super(accountNumber, balance);
@@ -60,7 +56,6 @@ class SavingsAccount extends Account implements Transaction {
     }
 }
 
-// Concrete subclass for CheckingAccount
 class CheckingAccount extends Account implements Transaction {
     public CheckingAccount(String accountNumber, double balance) {
         super(accountNumber, balance);
@@ -90,7 +85,6 @@ class CheckingAccount extends Account implements Transaction {
     }
 }
 
-// Bank Management System class
 public class BankManagement{
     private List<Account> accounts;
     private Scanner scanner;
@@ -113,7 +107,7 @@ public class BankManagement{
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline character
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -146,11 +140,11 @@ public class BankManagement{
         String accountNumber = scanner.nextLine();
         System.out.print("Enter initial balance: ");
         double initialBalance = scanner.nextDouble();
-        scanner.nextLine(); // Consume newline character
+        scanner.nextLine();
 
         System.out.print("Enter account type (1 for Savings, 2 for Checking): ");
         int accountType = scanner.nextInt();
-        scanner.nextLine(); // Consume newline character
+        scanner.nextLine();
 
         if (accountType == 1) {
             accounts.add(new SavingsAccount(accountNumber, initialBalance));
